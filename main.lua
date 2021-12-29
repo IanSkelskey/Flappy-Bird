@@ -253,12 +253,23 @@ function love.update(dt)
     love.mouse.buttonsPressed = {}
 end
 
+--[[
+    Renders the current FPS.
+    Renders the current FPS.draw
+]]
+function displayFPS()
+    -- simple FPS display across all states
+    love.graphics.setFont(smallFont)
+    love.graphics.setColor(0, 255, 0, 255)
+    love.graphics.print('FPS: ' .. tostring(love.timer.getFPS()), 15, 5)
+end
+
 function love.draw()
     push:start()
  love.graphics.draw(background, -backgroundScroll, 0)
         gStateMachine:render()
         love.graphics.draw(ground, -groundScroll, VIRTUAL_HEIGHT - 16)
 
-
+        --displayFPS()
     push:finish()
 end
