@@ -10,9 +10,17 @@ PauseState = Class{__includes = BaseState}
 
 require 'states/PlayState'
 
+function PauseState:enter(params)
+  self.highScores = params.highScores
+  score = params.score
+    sounds['pause']:play()
+    -- if we're coming from death, restart scrolling
+    scrolling = false
+end
+
 function PauseState:init()
     fromStart = false
-    
+
     sounds['music']:setVolume(0.5)
 end
 
@@ -20,7 +28,10 @@ function PauseState:update(dt)
      if love.keyboard.wasPressed('p') then
         sounds['pause']:stop()
         sounds['pause']:play()
-        gStateMachine:change('countdown')
+        gStateMachine:change('countdown', {
+          score = score,
+          highScores = self.highScores
+        })
     end
 
 end
@@ -35,15 +46,15 @@ function PauseState:render()
     love.graphics.setColor( 1, 1, 1, 1 )
     love.graphics.setFont(flappyFont)
     love.graphics.print('Score: ' .. tostring(score), 8, 8)
-    love.graphics.printf('PAUSE', 0, VIRTUAL_HEIGHT/2 - 32 , VIRTUAL_WIDTH, 'center')  
+    love.graphics.printf('PAUSE', 0, VIRTUAL_HEIGHT/2 - 32 , VIRTUAL_WIDTH, 'center')
+
+    if self.highScores == nil then
+      love.graphics.print('high score table is nil...', 50, 70)
+    end
 
 end
 
-function PauseState:enter()
-    sounds['pause']:play()
-    -- if we're coming from death, restart scrolling
-    scrolling = false
-end
+
 
 --[[
     Called when this state changes to another state.
@@ -52,5 +63,5 @@ function PauseState:exit()
     sounds['music']:setVolume(1)
     -- stop scrolling for the death/score screen
     scrolling = true
-    
+
 end

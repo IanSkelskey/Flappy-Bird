@@ -71,6 +71,10 @@ function CountdownState:render()
         love.graphics.print('Score: ' .. tostring(score), 8, 8)
         bird:render()
 
+        if self.highScores == nil then
+          love.graphics.print('high score table is nil...', 50, 70)
+        end
+
     end
     -- render count big in the middle of the screen
 

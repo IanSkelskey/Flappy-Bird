@@ -17,12 +17,19 @@ PIPE_HEIGHT = 288
 BIRD_WIDTH = 38
 BIRD_HEIGHT = 24
 
-function PlayState:enter(params)
-    self.highScores = params.highScores
-    score = params.score
+--[[
+    Called when this state is transitioned to from another state.
+]]
+function PlayState:enter()
+  self.highScores = params.highScores
+  score = params.score
+    sounds['go']:play()
+    -- if we're coming from death, restart scrolling
+
 end
 
 function PlayState:init()
+    scrolling = true
     sounds['music']:play()
 
     self.timer = 0
@@ -114,7 +121,10 @@ function PlayState:update(dt)
     end
 
     if love.keyboard.wasPressed('p') then
-        gStateMachine:change('pause')
+        gStateMachine:change('pause', {
+          score = score,
+          highScores = self.highScores
+        })
     end
 
 end
@@ -134,14 +144,7 @@ function PlayState:render()
     bird:render()
 end
 
---[[
-    Called when this state is transitioned to from another state.
-]]
-function PlayState:enter()
-    sounds['go']:play()
-    -- if we're coming from death, restart scrolling
-    scrolling = true
-end
+
 
 --[[
     Called when this state changes to another state.
