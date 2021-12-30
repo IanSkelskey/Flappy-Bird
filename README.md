@@ -15,6 +15,9 @@ Here are the features that I added since submission:
   - Platinum (100 pts)
   - Diamond (200 pts) 
 
+# Demo Video
+https://www.youtube.com/watch?v=WDggad8ArJ8&t=13s&ab_channel=IanSkelskey
+
 # Compatibility:
 Mac and PC (iOS and Android Coming Soon!)
 
@@ -29,3 +32,7 @@ Mac and PC Users:
 # Testers:
 
 @Tymelus (https://www.youtube.com/channel/UC6Ou77qQLGzmsDJxBm96tiA)
+
+# Social
+- LinkedIn: https://www.linkedin.com/in/ianskelskey/
+- YouTube: https://www.youtube.com/user/IanSkelskey
