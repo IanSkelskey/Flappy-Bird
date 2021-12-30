@@ -8,11 +8,23 @@ Here are the features that I added since submission:
 - Variable Pipe Gaps
 - Pause Feature
 - High Sores w/ Leaderboard and Persistent Data
+- Medal Award System:
+  - Bronze (10 pts)
+  - Silver (25 pts)
+  - Gold (50 pts)
+  - Platinum (100 pts)
+  - Diamond (200 pts) 
 
 # Compatibility:
 Mac and PC (iOS and Android Coming Soon!)
 
 # Download and Install Instructions:
+Mac and PC Users:
+- Download and install Love2D from https://love2d.org/
+- Navigate to /dist/pc-mac within this repo
+- Download flappy.love
+- Double click flappy.love and you're good to go!
+
 
 # Testers:
 
